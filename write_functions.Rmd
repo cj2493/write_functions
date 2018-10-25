@@ -110,7 +110,9 @@ mean_and_sd(unif_sample)
 ```
 
 
-### Multiple inputs with simple linear regression example
+## Multiple inputs 
+
+Look at simple linear regression!
 
 ```{r}
 sim_data = tibble(
@@ -123,4 +125,32 @@ ls_fit = lm(y ~ x, data = sim_data)
 beta0_hat = coef(ls_fit)[1]
 beta1_hat = coef(ls_fit)[2]
 ```
+
+
+Write a function that simulates, fits the model, and returns the estimates. Inputs are sample size and true coefficients.
+
+
+```{r}
+sim_regression = function(n, beta0, beta1) {
+  
+  sim_data = tibble(
+    x = rnorm(n, mean = 1, sd = 1),
+    y = beta0 + beta1 * x + rnorm(n, 0, 1)
+  )
+
+  ls_fit = lm(y ~ x, data = sim_data)
+  
+  tibble(
+    beta0_hat = coef(ls_fit)[1],
+    beta1_hat = coef(ls_fit)[2]
+  )
+  
+}
+```
+
+
+```{r}
+sim_regression(n = 3000, beta0 = 0, beta1 = -1)
+```
+
 
