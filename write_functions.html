@@ -129,7 +129,120 @@ $(document).ready(function () {
 </div>
 
 
+<div id="lets-write-some-functions" class="section level2">
+<h2>Let’s write some functions</h2>
+<p>start small!</p>
+<pre class="r"><code>x = rnorm(25, 5, 3)
 
+(x - mean(x)) / sd(x)</code></pre>
+<pre><code>##  [1] -0.11165781 -0.83432937 -0.51108303  0.43174797 -0.22603933
+##  [6]  0.99327209  1.96455275  0.04828944  0.21412590 -0.29613161
+## [11] -1.08765984 -0.07940246 -0.25372198 -0.21716166  1.50102520
+## [16]  0.55718584  1.52606117 -1.98182746 -0.39066672  1.07378930
+## [21] -1.35607185 -0.32718216  1.01692305 -1.83603677  0.18199934</code></pre>
+<p>Write a function to compute z scores for a vector.</p>
+<pre class="r"><code>z_scores = function(x) {
+  
+  (x - mean(x)) / sd(x)
+  
+}</code></pre>
+<p>Check to see if this works…</p>
+<pre class="r"><code>unif_sample = runif(100)
+
+z_scores(unif_sample)</code></pre>
+<pre><code>##   [1]  1.558204858  1.617097827 -1.298082161  0.709504143 -0.007433498
+##   [6]  1.620363439  1.488436403 -0.021673309 -0.659552080 -1.540310623
+##  [11]  1.033816506  1.173127916  1.041265474 -0.295041826  0.947435240
+##  [16]  0.126140230 -0.810554620  0.826323598 -0.102390720  1.487245504
+##  [21]  0.222310761  0.625906081  0.415296771 -1.406869066  1.403584431
+##  [26]  0.223393514 -0.375669150  1.420013403  0.845550386  0.950465785
+##  [31] -1.231424568  0.515566206  1.589267015 -1.004845320 -0.164200731
+##  [36] -0.129163784 -1.050066059 -0.606725459  0.137298166 -1.036491742
+##  [41] -0.071369894 -1.679709483 -1.162600589 -1.606736998 -0.775965290
+##  [46] -0.280291803  0.164537035 -0.464314080  1.029979927 -0.883673906
+##  [51]  1.540440065  0.613342585 -0.741911589 -0.365083487 -1.089785099
+##  [56]  1.078438839  0.954475350 -0.238326396 -1.208062911  0.620664057
+##  [61]  1.293466646 -1.331727304  0.855468331 -0.594233621 -0.231627993
+##  [66] -0.315338408  0.376596122  1.676788204  0.577568166 -0.286717437
+##  [71]  0.931343080 -0.737343711  0.792007761 -0.273496805 -0.151877520
+##  [76] -0.538547532  1.633949377 -0.794913588  1.353029423  0.570705553
+##  [81] -1.671954552 -1.481487914 -1.524779304 -0.896995126  1.164349634
+##  [86]  0.163546953  0.589203443 -1.546902215 -1.479526926  1.123313003
+##  [91] -0.683536345 -1.476936246 -0.969594668 -0.835014053  0.017655951
+##  [96] -1.327619613 -1.472322208  0.815952252  1.038484985 -0.022101072</code></pre>
+<p>Check the following examples</p>
+<pre class="r"><code>z_scores(3)</code></pre>
+<pre><code>## [1] NA</code></pre>
+<pre class="r"><code>z_scores(&quot;my name is Jeff&quot;)</code></pre>
+<pre><code>## Warning in mean.default(x): argument is not numeric or logical: returning
+## NA</code></pre>
+<pre><code>## Error in x - mean(x): non-numeric argument to binary operator</code></pre>
+<pre class="r"><code>z_scores(iris)</code></pre>
+<pre><code>## Warning in mean.default(x): argument is not numeric or logical: returning
+## NA</code></pre>
+<pre><code>## Warning in Ops.factor(left, right): '-' not meaningful for factors</code></pre>
+<pre><code>## Error in is.data.frame(x): (list) object cannot be coerced to type 'double'</code></pre>
+<pre class="r"><code>z_scores(sample(c(TRUE, FALSE), 25, replace = TRUE))</code></pre>
+<pre><code>##  [1] -0.9413574 -0.9413574  1.0198039  1.0198039 -0.9413574  1.0198039
+##  [7]  1.0198039 -0.9413574  1.0198039 -0.9413574 -0.9413574 -0.9413574
+## [13] -0.9413574  1.0198039 -0.9413574  1.0198039 -0.9413574  1.0198039
+## [19] -0.9413574  1.0198039 -0.9413574  1.0198039  1.0198039 -0.9413574
+## [25]  1.0198039</code></pre>
+<p>Put in some checks on inputs</p>
+<pre class="r"><code>z_scores = function(x) {
+  
+  if (!is.numeric(x)) {
+    stop(&quot;Argument x should be numeric&quot;)
+  } else if (length(x) == 1) {
+    stop(&quot;Z scores cannot be computed for length 1 vectors&quot;)
+  }
+  
+  (x - mean(x)) / sd(x)
+}</code></pre>
+<p>Check again…</p>
+<pre class="r"><code>z_scores(3)</code></pre>
+<pre><code>## Error in z_scores(3): Z scores cannot be computed for length 1 vectors</code></pre>
+<pre class="r"><code>z_scores(&quot;my name is Jeff&quot;)</code></pre>
+<pre><code>## Error in z_scores(&quot;my name is Jeff&quot;): Argument x should be numeric</code></pre>
+<pre class="r"><code>z_scores(iris)</code></pre>
+<pre><code>## Error in z_scores(iris): Argument x should be numeric</code></pre>
+<pre class="r"><code>z_scores(sample(c(TRUE, FALSE), 25, replace = TRUE))</code></pre>
+<pre><code>## Error in z_scores(sample(c(TRUE, FALSE), 25, replace = TRUE)): Argument x should be numeric</code></pre>
+<div id="mean-and-standard-deviation" class="section level3">
+<h3>Mean and standard deviation</h3>
+<pre class="r"><code>mean_and_sd = function(x) {
+  
+  if (!is.numeric(x)) {
+    stop(&quot;Argument x should be numeric&quot;)
+  } else if (length(x) == 1) {
+    stop(&quot;Cannot be computed for length 1 vectors&quot;)
+  }
+  
+  tibble(
+    mean_x = mean(x),
+    sd_x = sd(x)
+    
+  )
+}</code></pre>
+<pre class="r"><code>mean_and_sd(unif_sample)</code></pre>
+<pre><code>## # A tibble: 1 x 2
+##   mean_x  sd_x
+##    &lt;dbl&gt; &lt;dbl&gt;
+## 1  0.497 0.293</code></pre>
+</div>
+<div id="multiple-inputs-with-simple-linear-regression-example" class="section level3">
+<h3>Multiple inputs with simple linear regression example</h3>
+<pre class="r"><code>sim_data = tibble(
+  x = rnorm(30, mean = 1, sd = 1),
+  y = 2 + 3 * x + rnorm(30, 0, 1)
+)
+
+ls_fit = lm(y ~ x, data = sim_data)
+  
+beta0_hat = coef(ls_fit)[1]
+beta1_hat = coef(ls_fit)[2]</code></pre>
+</div>
+</div>
 
 
 
