@@ -135,11 +135,11 @@ $(document).ready(function () {
 <pre class="r"><code>x = rnorm(25, 5, 3)
 
 (x - mean(x)) / sd(x)</code></pre>
-<pre><code>##  [1]  0.075706400  1.488595692  0.008757137 -0.116176984  0.436816142
-##  [6] -1.517664666 -0.556515149 -0.565724131 -0.097620529 -1.096050510
-## [11] -0.284314465 -0.662663871 -1.372570526 -1.060348838  2.340291140
-## [16] -0.101877650  0.938414323 -0.574002288  1.886804285  0.811053404
-## [21] -1.161938743 -0.363040947  0.800681780  0.913552950 -0.170163958</code></pre>
+<pre><code>##  [1] -0.861779755 -0.649544020  1.383472833  1.129732136  0.012372156
+##  [6] -1.450635067  0.211521635  1.135676963  0.072485729  0.902953200
+## [11] -1.507211856 -2.384006925  0.200830684 -0.968138951  0.004691834
+## [16]  0.500384285  0.819055431 -1.615012703  1.121005712  0.877736517
+## [21] -0.035583066  0.930585344 -0.001412393  0.000823008  0.169997268</code></pre>
 <p>Write a function to compute z scores for a vector.</p>
 <pre class="r"><code>z_scores = function(x) {
   
@@ -150,26 +150,26 @@ $(document).ready(function () {
 <pre class="r"><code>unif_sample = runif(100)
 
 z_scores(unif_sample)</code></pre>
-<pre><code>##   [1] -1.290743821 -0.087942122  1.327162033 -0.224168916  0.213501069
-##   [6]  1.384538706  0.496549841  1.390704488  0.055980601 -0.672911018
-##  [11] -1.739207467  0.806576891  1.494814385  0.078249503  1.532947019
-##  [16]  0.961119784 -1.794569718  0.343689126  0.185848853 -0.358557045
-##  [21] -0.955810499 -1.374633617 -0.418329938  1.139399270  0.563715305
-##  [26]  1.265118472  0.942919532 -1.081973433  1.120236993  0.684459156
-##  [31] -0.347583107  0.316211342  0.678965012 -0.792204324  0.371158032
-##  [36] -0.366797397  1.035628132 -0.413380496 -1.728093971  1.510453708
-##  [41]  0.029271830 -0.656614571  0.377837627 -0.713055001  0.787690645
-##  [46] -1.653121572 -1.471294144 -1.517152585 -0.149877413  1.531088331
-##  [51] -1.096248175  0.272985224  1.293123665 -1.183081859  0.754219494
-##  [56]  1.617663750 -0.574909456 -1.055163986 -0.692982684 -0.335478845
-##  [61] -0.754062462 -0.344119907  0.888993332  1.170071539  0.584378688
-##  [66]  0.646741105  1.501408211  0.700467666 -1.588091501 -0.978467938
-##  [71]  1.181858730 -0.149503696 -0.354064454 -1.684610200 -0.804075596
-##  [76] -0.846799090 -0.028646934 -0.906389841 -1.093547070 -0.765991078
-##  [81] -0.507795539  0.009351459  0.740432409  0.731344528  1.083370616
-##  [86] -0.697557815 -1.143692167 -1.578346004 -0.752489597  0.067948797
-##  [91]  1.547507911  1.660019585 -1.591389800  0.246986153  0.511090313
-##  [96] -0.280288922 -1.270039088  0.203966344  1.293298964  1.532791708</code></pre>
+<pre><code>##   [1]  1.32524167  0.38725074 -1.03103068  1.82082343 -1.10735369
+##   [6] -0.12808424 -0.43020189 -1.47960547  1.12824447 -1.45391360
+##  [11]  1.85646328 -0.93655766 -0.10574331  0.07474961 -1.16267600
+##  [16] -1.34338140 -0.89068417  0.92791959  0.92548894 -0.08758602
+##  [21] -0.21948164  1.28326555 -0.95972955  0.36485106  1.55659998
+##  [26] -1.24531821  1.51571877 -0.26344987 -0.62051373 -0.97404669
+##  [31] -0.46982208  1.03253432 -1.05032372  1.79005213 -0.94077173
+##  [36] -0.95412486 -0.09785661  1.22550712  1.52510430 -0.05374473
+##  [41] -1.19021781  0.60751189  1.68449885  0.92687286 -1.09144487
+##  [46] -1.22570961  0.87917683 -0.76527470 -0.75563176  1.57343566
+##  [51]  0.06411964 -0.52490559  0.66281569 -0.38106249 -0.81119175
+##  [56]  1.39695739  0.99083881 -1.49331261 -0.04729249  0.67833170
+##  [61] -0.51939578 -1.12328352 -0.73863435 -1.57189306 -1.51716318
+##  [66]  0.23502578  0.50924689  0.72435402 -0.36641050  0.99392751
+##  [71]  0.12355793  1.87545484  0.93432749  1.49358029 -0.82000693
+##  [76] -1.55433678 -0.79216315 -0.06565130  0.02725613  0.11544398
+##  [81]  1.02073640  0.33369884  0.41960058 -1.51314348 -1.06118377
+##  [86] -0.84051667 -1.26933263 -0.09676207  0.95335836  0.80186072
+##  [91]  1.33074110 -0.12772229 -0.13172530 -0.91895295 -0.37484470
+##  [96]  0.75854202  0.14358992  1.57641211 -0.08630862 -0.79361293</code></pre>
 <p>Check the following examples</p>
 <pre class="r"><code>z_scores(3)</code></pre>
 <pre><code>## [1] NA</code></pre>
@@ -183,11 +183,8 @@ z_scores(unif_sample)</code></pre>
 <pre><code>## Warning in Ops.factor(left, right): '-' not meaningful for factors</code></pre>
 <pre><code>## Error in is.data.frame(x): (list) object cannot be coerced to type 'double'</code></pre>
 <pre class="r"><code>z_scores(sample(c(TRUE, FALSE), 25, replace = TRUE))</code></pre>
-<pre><code>##  [1]  1.0198039 -0.9413574  1.0198039 -0.9413574 -0.9413574  1.0198039
-##  [7]  1.0198039 -0.9413574 -0.9413574 -0.9413574  1.0198039  1.0198039
-## [13]  1.0198039  1.0198039 -0.9413574 -0.9413574 -0.9413574 -0.9413574
-## [19]  1.0198039 -0.9413574  1.0198039  1.0198039  1.0198039 -0.9413574
-## [25] -0.9413574</code></pre>
+<pre><code>##  [1]  1.2 -0.8 -0.8  1.2 -0.8 -0.8  1.2 -0.8  1.2 -0.8  1.2 -0.8 -0.8  1.2
+## [15] -0.8  1.2 -0.8 -0.8 -0.8 -0.8 -0.8  1.2  1.2 -0.8  1.2</code></pre>
 <p>Put in some checks on inputs</p>
 <pre class="r"><code>z_scores = function(x) {
   
@@ -228,7 +225,7 @@ z_scores(unif_sample)</code></pre>
 <pre><code>## # A tibble: 1 x 2
 ##   mean_x  sd_x
 ##    &lt;dbl&gt; &lt;dbl&gt;
-## 1  0.504 0.278</code></pre>
+## 1  0.457 0.286</code></pre>
 </div>
 </div>
 <div id="multiple-inputs" class="section level2">
@@ -263,7 +260,147 @@ beta1_hat = coef(ls_fit)[2]</code></pre>
 <pre><code>## # A tibble: 1 x 2
 ##   beta0_hat beta1_hat
 ##       &lt;dbl&gt;     &lt;dbl&gt;
-## 1    0.0350     -1.02</code></pre>
+## 1   -0.0468    -0.958</code></pre>
+</div>
+<div id="revisit-amazon-data" class="section level2">
+<h2>Revisit Amazon data</h2>
+<pre class="r"><code>url = &quot;https://www.amazon.com/product-reviews/B00005JNBQ/ref=cm_cr_arp_d_viewopt_rvwer?ie=UTF8&amp;reviewerType=avp_only_reviews&amp;sortBy=recent&amp;pageNumber=1&quot;
+
+dynamite_html = read_html(url)
+
+review_titles = dynamite_html %&gt;%
+  html_nodes(&quot;#cm_cr-review_list .review-title&quot;) %&gt;%
+  html_text()
+
+review_stars = dynamite_html %&gt;%
+  html_nodes(&quot;#cm_cr-review_list .review-rating&quot;) %&gt;%
+  html_text()
+
+review_text = dynamite_html %&gt;%
+    html_nodes(&quot;.review-data:nth-child(4)&quot;) %&gt;%
+    html_text()
+
+reviews = tibble(
+  title = review_titles,
+  stars = review_stars,
+  text = review_text
+)</code></pre>
+<p>Now write a function for this</p>
+<pre class="r"><code>read_page_reviews &lt;- function(url) {
+  
+  h = read_html(url)
+  
+  review_titles = h %&gt;%
+    html_nodes(&quot;#cm_cr-review_list .review-title&quot;) %&gt;%
+    html_text()
+  
+  review_stars = h %&gt;%
+    html_nodes(&quot;#cm_cr-review_list .review-rating&quot;) %&gt;%
+    html_text() %&gt;%
+    str_extract(&quot;\\d&quot;) %&gt;%
+    as.numeric()
+  
+  review_text = h %&gt;%
+    html_nodes(&quot;.review-data:nth-child(4)&quot;) %&gt;%
+    html_text()
+  
+  reviews = tibble(
+    title = review_titles,
+    stars = review_stars,
+    text = review_text
+  )
+  
+  reviews
+}
+
+read_page_reviews(url)</code></pre>
+<pre><code>## # A tibble: 10 x 3
+##    title                     stars text                                   
+##    &lt;chr&gt;                     &lt;dbl&gt; &lt;chr&gt;                                  
+##  1 &quot;Great \&quot;Odd Ball\&quot; movi~     5 The dance scene was worth the time spe~
+##  2 Nostalgic Stupidity           4 This movie is dumb. I won't lie and sa~
+##  3 Happy                         5 Don't know why I lov this movie but ido
+##  4 Go watch THE ROCK or dum~     2 This movie is horrible. How do so many~
+##  5 My mom loves it               5 Got this for my mom for mother's day, ~
+##  6 Nothing Quite Like It.        5 So much fun watching these listless pe~
+##  7 Has pretty sweet bow ski~     5 Well, things are getting pretty seriou~
+##  8 Great                         5 Great                                  
+##  9 Fast delivery                 5 Bought as gift                         
+## 10 Lol                           5 Funny</code></pre>
+<pre class="r"><code>url2 = &quot;https://www.amazon.com/product-reviews/B00005JNBQ/ref=cm_cr_arp_d_viewopt_rvwer?ie=UTF8&amp;reviewerType=avp_only_reviews&amp;sortBy=recent&amp;pageNumber=2&quot;
+
+read_page_reviews(url2)</code></pre>
+<pre><code>## # A tibble: 10 x 3
+##    title                       stars text                                 
+##    &lt;chr&gt;                       &lt;dbl&gt; &lt;chr&gt;                                
+##  1 Vote For Pedro                  5 Flippin sweet                        
+##  2 So funny!                       5 Best movie ever                      
+##  3 Great move                      5 This movie is classic.its just so si~
+##  4 Refund needed. Did not pay~     1 Refund my money.  This feature did n~
+##  5 Need a laugh?                   5 A cult favorite, purchased as a gift.
+##  6 The greatest!                   5 This is such a classic movie! it's t~
+##  7 Five Stars                      5 Favorite movie                       
+##  8 Napoleon Dynamite is an aw~     5 Great entertainment.                 
+##  9 One Star                        1 The You Tube clips are funnier than ~
+## 10 &quot;\U0001f62b&quot;                    5 Love this movie</code></pre>
+<p>Let’s extract a lot of reviews</p>
+<pre class="r"><code>url_base = &quot;https://www.amazon.com/product-reviews/B00005JNBQ/ref=cm_cr_arp_d_viewopt_rvwer?ie=UTF8&amp;reviewerType=avp_only_reviews&amp;sortBy=recent&amp;pageNumber=&quot;
+
+urls = str_c(url_base, 1:5)
+
+dynamite_reviews = bind_rows(
+  read_page_reviews(urls[1]),
+  read_page_reviews(urls[2]),
+  read_page_reviews(urls[3]),
+  read_page_reviews(urls[4]),
+  read_page_reviews(urls[5])
+)</code></pre>
+<p>Revisit LotR data</p>
+<pre class="r"><code>fellowship_ring = readxl::read_excel(&quot;./data/LotR_Words.xlsx&quot;, range = &quot;B3:D6&quot;) %&gt;%
+  mutate(movie = &quot;fellowship_ring&quot;)
+
+two_towers = readxl::read_excel(&quot;./data/LotR_Words.xlsx&quot;, range = &quot;F3:H6&quot;) %&gt;%
+  mutate(movie = &quot;two_towers&quot;)
+
+return_king = readxl::read_excel(&quot;./data/LotR_Words.xlsx&quot;, range = &quot;J3:L6&quot;) %&gt;%
+  mutate(movie = &quot;return_king&quot;)
+
+lotr_tidy = bind_rows(fellowship_ring, two_towers, return_king) %&gt;%
+  janitor::clean_names() %&gt;%
+  gather(key = sex, value = words, female:male) %&gt;%
+  mutate(race = tolower(race)) %&gt;% 
+  select(movie, everything())</code></pre>
+<p>Try to write a function to do this</p>
+<pre class="r"><code>lotr_import = function(cell_range, movie_title) {
+  
+  df = readxl::read_excel(&quot;./data/LotR_Words.xlsx&quot;, range = cell_range) %&gt;%
+    mutate(movie = movie_title)
+  
+  df
+  
+}
+
+lotr_import(cell_range = &quot;B3:D6&quot;, movie_title = &quot;fellowship_ring&quot;)</code></pre>
+<pre><code>## # A tibble: 3 x 4
+##   Race   Female  Male movie          
+##   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;          
+## 1 Elf      1229   971 fellowship_ring
+## 2 Hobbit     14  3644 fellowship_ring
+## 3 Man         0  1995 fellowship_ring</code></pre>
+<pre class="r"><code>lotr_import(cell_range = &quot;F3:H6&quot;, movie_title = &quot;two_towers&quot;)</code></pre>
+<pre><code>## # A tibble: 3 x 4
+##   Race   Female  Male movie     
+##   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     
+## 1 Elf       331   513 two_towers
+## 2 Hobbit      0  2463 two_towers
+## 3 Man       401  3589 two_towers</code></pre>
+<pre class="r"><code>lotr_import(cell_range = &quot;J3:L6&quot;, movie_title = &quot;return_king&quot;)</code></pre>
+<pre><code>## # A tibble: 3 x 4
+##   Race   Female  Male movie      
+##   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      
+## 1 Elf       183   510 return_king
+## 2 Hobbit      2  2673 return_king
+## 3 Man       268  2459 return_king</code></pre>
 </div>
 
 

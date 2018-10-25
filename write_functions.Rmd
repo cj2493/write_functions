@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 library(tidyverse)
 library(rvest)
 library(p8105.datasets)
+library(httr)
 library(viridis)
 theme_set(theme_bw() + theme(legend.position = "bottom"))
 ```
@@ -151,6 +152,126 @@ sim_regression = function(n, beta0, beta1) {
 
 ```{r}
 sim_regression(n = 3000, beta0 = 0, beta1 = -1)
+```
+
+
+## Revisit Amazon data
+
+```{r}
+url = "https://www.amazon.com/product-reviews/B00005JNBQ/ref=cm_cr_arp_d_viewopt_rvwer?ie=UTF8&reviewerType=avp_only_reviews&sortBy=recent&pageNumber=1"
+
+dynamite_html = read_html(url)
+
+review_titles = dynamite_html %>%
+  html_nodes("#cm_cr-review_list .review-title") %>%
+  html_text()
+
+review_stars = dynamite_html %>%
+  html_nodes("#cm_cr-review_list .review-rating") %>%
+  html_text()
+
+review_text = dynamite_html %>%
+    html_nodes(".review-data:nth-child(4)") %>%
+    html_text()
+
+reviews = tibble(
+  title = review_titles,
+  stars = review_stars,
+  text = review_text
+)
+```
+
+
+Now write a function for this
+
+```{r}
+read_page_reviews <- function(url) {
+  
+  h = read_html(url)
+  
+  review_titles = h %>%
+    html_nodes("#cm_cr-review_list .review-title") %>%
+    html_text()
+  
+  review_stars = h %>%
+    html_nodes("#cm_cr-review_list .review-rating") %>%
+    html_text() %>%
+    str_extract("\\d") %>%
+    as.numeric()
+  
+  review_text = h %>%
+    html_nodes(".review-data:nth-child(4)") %>%
+    html_text()
+  
+  reviews = tibble(
+    title = review_titles,
+    stars = review_stars,
+    text = review_text
+  )
+  
+  reviews
+}
+
+read_page_reviews(url)
+
+url2 = "https://www.amazon.com/product-reviews/B00005JNBQ/ref=cm_cr_arp_d_viewopt_rvwer?ie=UTF8&reviewerType=avp_only_reviews&sortBy=recent&pageNumber=2"
+
+read_page_reviews(url2)
+```
+
+
+
+Let's extract a lot of reviews
+
+```{r}
+url_base = "https://www.amazon.com/product-reviews/B00005JNBQ/ref=cm_cr_arp_d_viewopt_rvwer?ie=UTF8&reviewerType=avp_only_reviews&sortBy=recent&pageNumber="
+
+urls = str_c(url_base, 1:5)
+
+dynamite_reviews = bind_rows(
+  read_page_reviews(urls[1]),
+  read_page_reviews(urls[2]),
+  read_page_reviews(urls[3]),
+  read_page_reviews(urls[4]),
+  read_page_reviews(urls[5])
+)
+```
+
+
+Revisit LotR data
+
+```{r}
+fellowship_ring = readxl::read_excel("./data/LotR_Words.xlsx", range = "B3:D6") %>%
+  mutate(movie = "fellowship_ring")
+
+two_towers = readxl::read_excel("./data/LotR_Words.xlsx", range = "F3:H6") %>%
+  mutate(movie = "two_towers")
+
+return_king = readxl::read_excel("./data/LotR_Words.xlsx", range = "J3:L6") %>%
+  mutate(movie = "return_king")
+
+lotr_tidy = bind_rows(fellowship_ring, two_towers, return_king) %>%
+  janitor::clean_names() %>%
+  gather(key = sex, value = words, female:male) %>%
+  mutate(race = tolower(race)) %>% 
+  select(movie, everything())
+```
+
+Try to write a function to do this
+
+```{r}
+lotr_import = function(cell_range, movie_title) {
+  
+  df = readxl::read_excel("./data/LotR_Words.xlsx", range = cell_range) %>%
+    mutate(movie = movie_title)
+  
+  df
+  
+}
+
+lotr_import(cell_range = "B3:D6", movie_title = "fellowship_ring")
+lotr_import(cell_range = "F3:H6", movie_title = "two_towers")
+lotr_import(cell_range = "J3:L6", movie_title = "return_king")
 ```
 
 
